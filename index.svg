@@ -1,324 +1,216 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>gip & zay's panel</title>
-
-<style type="text/css">
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#000000;
-    color:#ffffff;
-    font-family:monospace;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-}
-
-.panel{
-    background:#000000;
-    border-bottom:1px solid rgb(0,255,136);
-    padding:18px 24px;
-    font-size:20px;
-    font-weight:600;
-}
-
-.grid{
-    flex:1;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-    gap:20px;
-    padding:30px;
-    align-content:start;
-}
-
-.box{
-    background:#1c1c1c;
-    border:2px solid #2f2f2f;
-    border-radius:14px;
-    padding:10px 12px;
-    min-height:200px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:all 0.2s ease;
-    user-select:none;
-}
-
-.box:hover{
-    transform:translateY(-6px);
-    background:#242424;
-    border-color:rgb(0,255,136);
-}
-
-p{
-    font-size:22px;
-    font-weight:500;
-    color:rgb(0,255,136);
-}
-
-.section-title{
-    grid-column:1 / -1;
-    color:rgb(0,255,136);
-    font-size:18px;
-    opacity:0.8;
-    margin-top:10px;
-}
-
-.panel2{
-    background:#000000;
-    border-top:1px solid rgb(0,255,136);
-    text-align:center;
-    padding:14px;
-}
-
-.panel2 p{
-    font-size:14px;
-}
-</style>
-
-<script type="text/javascript">
-//<![CDATA[
-
-async function changetots(page){
-
-    if(page === "gnmath"){
-
-    var res = await fetch(
-        "https://cdn.jsdelivr.net/gh/freebuisness/freebuisness.github.io@main/singlefile.html?t=" + Date.now()
-    );
-
-    var html = await res.text();
-
-    document.open();
-    document.write(html);
-    document.close();
-}
-
-    if(page === "frog"){
-        document.body.innerHTML =
-        '<iframe src="https://kingchandler.freeddns.us/" ' +
-        'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
-
-        window.onbeforeunload = function(e){
-            e.preventDefault();
-            e.returnValue = "";
-        };
-    }
-
-    if(page === "sdxp"){
-        document.body.innerHTML =
-        '<iframe src="https://evdrgcfson.marineequipment.co.nz/" ' +
-        'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
-
-        window.onbeforeunload = function(e){
-            e.preventDefault();
-            e.returnValue = "";
-        };
-    }
-
-    if(page === "lucide"){
-        document.body.innerHTML =
-        '<iframe src="https://cdn.jsdelivr.net/gh/lucideproxy/svg@latest/logo.svg#/" ' +
-        'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
-
-        window.onbeforeunload = function(e){
-            e.preventDefault();
-            e.returnValue = "";
-        };
-    }
-
-    if(page === "edurocks"){
-        document.body.innerHTML =
-        '<iframe src="https://d1kdg4gl68lhf1.cloudfront.net/index.html" ' +
-        'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
-
-        window.onbeforeunload = function(e){
-            e.preventDefault();
-            e.returnValue = "";
-        };
-    }
-
-    if(page === "dogeub"){
-        document.body.innerHTML =
-        '<iframe src="https://educationate.s3.us-east-1.amazonaws.com/index.html" ' +
-        'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
-
-        window.onbeforeunload = function(e){
-            e.preventDefault();
-            e.returnValue = "";
-        };
-    }
-
-    if(page === "editor"){
-
-        document.body.innerHTML =
-
-        '<div class="editor-wrap">' +
-
-            '<div class="editor-top">' +
-                '<p>code editor</p>' +
-                '<button onclick="runCode()">run</button>' +
-            '</div>' +
-
-            '<div class="editor-grid">' +
-                '<textarea id="htmlCode" placeholder="HTML"></textarea>' +
-                '<textarea id="cssCode" placeholder="CSS"></textarea>' +
-                '<textarea id="jsCode" placeholder="JS"></textarea>' +
-            '</div>' +
-
-            '<iframe id="preview"></iframe>' +
-
-        '</div>' +
-
-        '<style type="text/css">' +
-
-            'body{' +
-                'margin:0;' +
-                'font-family:monospace;' +
-                'background:#000;' +
-                'color:rgb(0,255,136);' +
-            '}' +
-
-            '.editor-wrap{' +
-                'display:flex;' +
-                'flex-direction:column;' +
-                'height:100vh;' +
-            '}' +
-
-            '.editor-top{' +
-                'display:flex;' +
-                'justify-content:space-between;' +
-                'align-items:center;' +
-                'padding:10px;' +
-                'border-bottom:1px solid rgb(0,255,136);' +
-            '}' +
-
-            'button{' +
-                'background:black;' +
-                'color:rgb(0,255,136);' +
-                'border:1px solid rgb(0,255,136);' +
-                'padding:6px 10px;' +
-                'cursor:pointer;' +
-            '}' +
-
-            '.editor-grid{' +
-                'display:grid;' +
-                'grid-template-columns:1fr 1fr 1fr;' +
-                'height:40%;' +
-            '}' +
-
-            'textarea{' +
-                'background:#111;' +
-                'color:rgb(0,255,136);' +
-                'border:none;' +
-                'resize:none;' +
-                'outline:none;' +
-                'padding:10px;' +
-                'font-family:monospace;' +
-                'font-size:14px;' +
-            '}' +
-
-            'iframe{' +
-                'width:100%;' +
-                'height:60%;' +
-                'border:none;' +
-                'background:white;' +
-            '}' +
-
-        '</style>';
-    }
-}
-
-function runCode(){
-
-    var html = document.getElementById("htmlCode").value;
-    var css = document.getElementById("cssCode").value;
-    var js = document.getElementById("jsCode").value;
-
-    var preview = document.getElementById("preview");
-
-    preview.srcdoc =
-        '<html xmlns="http://www.w3.org/1999/xhtml">' +
-        '<head>' +
-        '<style type="text/css">' + css + '</style>' +
-        '</head>' +
-        '<body>' +
-        html +
-        '<script type="text/javascript">' + js + '<\/script>' +
-        '</body>' +
-        '</html>';
-}
-
-//]]>
-</script>
-
-</head>
-
-<body>
-
-<div class="panel">
-    <p>gip & zay's panel</p>
-</div>
-
-<div class="grid">
-
-    <div class="section-title">games</div>
-
-    <div class="box" onclick="changetots('gnmath')">
-        <p>gn-math</p>
-    </div>
-
-    <div class="box" onclick="changetots('sdxp')">
-        <p>sdxp</p>
-    </div>
-
-    <div class="box" onclick="changetots('edurocks')">
-        <p>edurocks</p>
-    </div>
-
-    <div class="section-title">links</div>
-
-    <div class="box" onclick="changetots('frog')">
-        <p>frogie's arcade</p>
-    </div>
-
-    <div class="box" onclick="changetots('dogeub')">
-        <p>dogeub</p>
-    </div>
-
-    <div class="box" onclick="changetots('lucide')">
-        <p>lucide</p>
-    </div>
-
-    <div class="section-title">misc</div>
-
-    <div class="box" onclick="changetots('editor')">
-        <p>code editor</p>
-    </div>
-
-    <div class="box" onclick="changetots('methods')">
-        <p>methods (wip)</p>
-    </div>
-
-</div>
-
-<div class="panel2">
-    <p>&#169; 2026 gip & zay</p>
-</div>
-
-</body>
-</html>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      <![CDATA[
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000000;
+        color: #ffffff;
+        font-family: monospace;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel {
+        background: #000000;
+        border-bottom: 1px solid rgb(0,255,136);
+        padding: 18px 24px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        align-content: start;
+      }
+
+      .box {
+        background: #1c1c1c;
+        border: 2px solid #2f2f2f;
+        border-radius: 14px;
+        padding: 10px 12px;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+      }
+
+      .box:hover {
+        transform: translateY(-6px);
+        background: #242424;
+        border-color: rgb(0,255,136);
+      }
+
+      p {
+        font-size: 22px;
+        font-weight: 500;
+        color: rgb(0,255,136);
+      }
+
+      .section-title {
+        grid-column: 1 / -1;
+        color: rgb(0,255,136);
+        font-size: 18px;
+        opacity: 0.8;
+        margin-top: 10px;
+      }
+
+      .panel2 {
+        background: #000000;
+        border-top: 1px solid rgb(0,255,136);
+        text-align: center;
+        padding: 14px;
+      }
+
+      .panel2 p {
+        font-size: 14px;
+      }
+      ]]>
+    </style>
+
+    <script type="text/javascript">
+      <![CDATA[
+      async function changetots(page){
+          if(page === "gnmath"){
+              var res = await fetch(
+                  "https://cdn.jsdelivr.net/gh/freebuisness/freebuisness.github.io@main/singlefile.html?t=" + Date.now()
+              );
+              var html = await res.text();
+              document.open();
+              document.write(html);
+              document.close();
+          }
+
+          if(page === "frog"){
+              document.body.innerHTML =
+              '<iframe src="https://kingchandler.freeddns.us/" ' +
+              'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
+              window.onbeforeunload = function(e){ e.preventDefault(); e.returnValue = ""; };
+          }
+
+          if(page === "sdxp"){
+              document.body.innerHTML =
+              '<iframe src="https://evdrgcfson.marineequipment.co.nz/" ' +
+              'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
+              window.onbeforeunload = function(e){ e.preventDefault(); e.returnValue = ""; };
+          }
+
+          if(page === "lucide"){
+              document.body.innerHTML =
+              '<iframe src="https://cdn.jsdelivr.net/gh/lucideproxy/svg@latest/logo.svg#/" ' +
+              'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
+              window.onbeforeunload = function(e){ e.preventDefault(); e.returnValue = ""; };
+          }
+
+          if(page === "edurocks"){
+              document.body.innerHTML =
+              '<iframe src="https://d1kdg4gl68lhf1.cloudfront.net/index.html" ' +
+              'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
+              window.onbeforeunload = function(e){ e.preventDefault(); e.returnValue = ""; };
+          }
+
+          if(page === "dogeub"){
+              document.body.innerHTML =
+              '<iframe src="https://educationate.s3.us-east-1.amazonaws.com/index.html" ' +
+              'style="width:100vw;height:100vh;border:none;background:black;"></iframe>';
+              window.onbeforeunload = function(e){ e.preventDefault(); e.returnValue = ""; };
+          }
+
+          if(page === "editor"){
+              document.body.innerHTML =
+              '<div class="editor-wrap">' +
+                  '<div class="editor-top">' +
+                      '<p>code editor</p>' +
+                      '<button onclick="runCode()">run</button>' +
+                  '</div>' +
+                  '<div class="editor-grid">' +
+                      '<textarea id="htmlCode" placeholder="HTML"></textarea>' +
+                      '<textarea id="cssCode" placeholder="CSS"></textarea>' +
+                      '<textarea id="jsCode" placeholder="JS"></textarea>' +
+                  '</div>' +
+                  '<iframe id="preview"></iframe>' +
+              '</div>' +
+              '<style type="text/css">' +
+                  'body{margin:0;font-family:monospace;background:#000;color:rgb(0,255,136);}' +
+                  '.editor-wrap{display:flex;flex-direction:column;height:100vh;}' +
+                  '.editor-top{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid rgb(0,255,136);}' +
+                  'button{background:black;color:rgb(0,255,136);border:1px solid rgb(0,255,136);padding:6px 10px;cursor:pointer;}' +
+                  '.editor-grid{display:grid;grid-template-columns:1fr 1fr 1fr;height:40%;}' +
+                  'textarea{background:#111;color:rgb(0,255,136);border:none;resize:none;outline:none;padding:10px;font-family:monospace;font-size:14px;}' +
+                  'iframe{width:100%;height:60%;border:none;background:white;}' +
+              '</style>';
+          }
+      }
+
+      function runCode(){
+          var html = document.getElementById("htmlCode").value;
+          var css = document.getElementById("cssCode").value;
+          var js = document.getElementById("jsCode").value;
+          var preview = document.getElementById("preview");
+          preview.srcdoc =
+              '<html>' +
+              '<head><style type="text/css">' + css + '</style></head>' +
+              '<body>' + html + '<script type="text/javascript">' + js + '<\/script></body>' +
+              '</html>';
+      }
+      ]]>
+    </script>
+  </defs>
+
+  <foreignObject width="100%" height="100%">
+    <xhtml:body xmlns:xhtml="http://www.w3.org/1999/xhtml">
+      <xhtml:div class="panel">
+          <xhtml:p>gip &amp; zay's panel</xhtml:p>
+      </xhtml:div>
+
+      <xhtml:div class="grid">
+          <xhtml:div class="section-title">games</xhtml:div>
+          <xhtml:div class="box" onclick="changetots('gnmath')">
+              <xhtml:p>gn-math</xhtml:p>
+          </xhtml:div>
+          <xhtml:div class="box" onclick="changetots('sdxp')">
+              <xhtml:p>sdxp</xhtml:p>
+          </xhtml:div>
+          <xhtml:div class="box" onclick="changetots('edurocks')">
+              <xhtml:p>edurocks</xhtml:p>
+          </xhtml:div>
+
+          <xhtml:div class="section-title">links</xhtml:div>
+          <xhtml:div class="box" onclick="changetots('frog')">
+              <xhtml:p>frogie's arcade</xhtml:p>
+          </xhtml:div>
+          <xhtml:div class="box" onclick="changetots('dogeub')">
+              <xhtml:p>dogeub</xhtml:p>
+          </xhtml:div>
+          <xhtml:div class="box" onclick="changetots('lucide')">
+              <xhtml:p>lucide</xhtml:p>
+          </xhtml:div>
+
+          <xhtml:div class="section-title">misc</xhtml:div>
+          <xhtml:div class="box" onclick="changetots('editor')">
+              <xhtml:p>code editor</xhtml:p>
+          </xhtml:div>
+          <xhtml:div class="box" onclick="changetots('methods')">
+              <xhtml:p>methods (wip)</xhtml:p>
+          </xhtml:div>
+      </xhtml:div>
+
+      <xhtml:div class="panel2">
+          <xhtml:p>© 2026 gip &amp; zay</xhtml:p>
+      </xhtml:div>
+    </xhtml:body>
+  </foreignObject>
+</svg>
